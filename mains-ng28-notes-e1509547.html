@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG28 · 简洁稳定的产品说明页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f6fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e2a3a;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0c1629 0%, #1a2740 50%, #0f1f32 100%);
+            color: #e9edf5;
+            padding: 4rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: #f4f6fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0.4rem auto 1.2rem;
+            font-weight: 300;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 208, 99, 0.12);
+            border: 1px solid rgba(255, 208, 99, 0.25);
+            color: #ffd46b;
+            font-size: 0.8rem;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+        }
+
+        /* 主内容区 浅色 */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+
+        /* 摘要卡片 */
+        .summary-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem 2.2rem;
+            margin: -1rem auto 2.2rem;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+            position: relative;
+            z-index: 2;
+            border: 1px solid #eef2f8;
+        }
+
+        .summary-card p {
+            font-size: 1.05rem;
+            color: #243142;
+        }
+
+        .summary-card strong {
+            color: #1b2b41;
+            font-weight: 550;
+        }
+
+        .summary-card .highlight {
+            color: #b67b32;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 2.8rem 0 1.2rem;
+            color: #182536;
+            letter-spacing: -0.01em;
+            border-left: 4px solid #b68c5c;
+            padding-left: 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 14px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e6ecf4;
+            transition: all 0.2s ease;
+        }
+
+        .feature-item:hover {
+            border-color: #cbd6e4;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .feature-item .icon {
+            font-size: 1.1rem;
+            color: #8f7a5c;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.06rem;
+            font-weight: 550;
+            margin-bottom: 0.3rem;
+            color: #1e2f42;
+        }
+
+        .feature-item p {
+            font-size: 0.94rem;
+            color: #3f5065;
+        }
+
+        .scenario-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.2rem 0 0.2rem;
+        }
+
+        .scenario-tag {
+            background: #eef2f8;
+            color: #1d3146;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            border: 1px solid #dce4ef;
+        }
+
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0 1.8rem;
+            border: 1px solid #eaeef5;
+        }
+
+        .faq-mini details {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5ebf3;
+            padding-bottom: 0.9rem;
+        }
+
+        .faq-mini details:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-mini summary {
+            font-weight: 510;
+            color: #1c3046;
+            cursor: pointer;
+            padding: 0.2rem 0;
+            font-size: 0.98rem;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            color: #9b855f;
+        }
+
+        .faq-mini p {
+            margin-top: 0.45rem;
+            font-size: 0.93rem;
+            color: #3a4b60;
+            padding-left: 0.2rem;
+        }
+
+        .tip-note {
+            background: #f0f4fc;
+            border-radius: 40px;
+            padding: 0.8rem 1.5rem;
+            margin: 2rem 0 1rem;
+            display: inline-block;
+            font-size: 0.9rem;
+            border: 1px solid #dce4ef;
+            color: #25405b;
+        }
+
+        .inline-link {
+            color: #b67b32;
+            text-decoration: none;
+            font-weight: 490;
+            border-bottom: 1px solid rgba(182, 123, 50, 0.2);
+            transition: border 0.15s, color 0.15s;
+        }
+
+        .inline-link:hover {
+            color: #8f6224;
+            border-bottom-color: #8f6224;
+        }
+
+        .footer-note {
+            margin: 3rem 0 1rem;
+            font-size: 0.85rem;
+            color: #6e7d91;
+            text-align: center;
+            border-top: 1px solid #dde3ec;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .summary-card {
+                padding: 1.6rem 1.2rem;
+                margin-top: -0.5rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .faq-mini {
+                padding: 1.2rem 1rem;
+            }
+            .container {
+                padding: 0 1rem 2.5rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <div class="badge">· 产品说明 · 稳定入口</div>
+        <h1>NG28 · 简明产品页</h1>
+        <p class="sub">一个偏向稳定与信息清晰的说明位置，帮助理解基础与路径。</p>
+    </header>
+
+    <main class="container">
+        <!-- 摘要卡片：自然引出链接 -->
+        <div class="summary-card">
+            <p>
+                当你需要了解某个产品的基础面貌时，一个<span class="highlight">稳定且克制的说明页</span>往往比喧哗的介绍更有价值。
+                下文围绕 <strong>ng28</strong> 这一标识，从功能要点、适用场景以及使用上的温和建议展开，
+                同时提供指向 <a href="https://mains-ng28.com" class="inline-link">ng28</a> 的直接参考线。
+            </p>
+        </div>
+
+        <!-- 亮点：产品特点 -->
+        <h2 class="section-title">特点简述</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="icon">⚙️</div>
+                <h3>一致的结构</h3>
+                <p>页面与功能区域采用相对固定的布局，降低重复识别成本，适合快速定位。</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">📂</div>
+                <h3>信息分层</h3>
+                <p>内容按摘要、特点、场景、提示分层，不堆叠，便于按需阅读。</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🔄</div>
+                <h3>无过度跳转</h3>
+                <p>主要说明集中在单页，减少不必要的中间环节，轻度使用者可快速浏览全貌。</p>
+            </div>
+            <div class="feature-item">
+                <div class="icon">🌐</div>
+                <h3>独立参考地址</h3>
+                <p>若需进一步查看，可留意文中或末尾提供的 <a href="https://mains-ng28.com" class="inline-link">ng28</a> 链接。</p>
+            </div>
+        </div>
+
+        <!-- 使用建议 + 场景 (温和) -->
+        <h2 class="section-title">场景与使用建议</h2>
+        <p style="margin-bottom: 0.8rem; color: #2a3f56;">
+            以下场景来自日常观察，仅作参考，不构成任何操作指令。
+        </p>
+        <div class="scenario-wrap">
+            <span class="scenario-tag">信息初查</span>
+            <span class="scenario-tag">功能概要回顾</span>
+            <span class="scenario-tag">轻量导航</span>
+            <span class="scenario-tag">固定入口备忘</span>
+            <span class="scenario-tag">静态说明查阅</span>
+        </div>
+
+        <div style="margin-top: 1.6rem; background: white; border-radius: 16px; padding: 1.3rem 1.6rem; border: 1px solid #e6ecf4;">
+            <p style="margin-bottom: 0.6rem;"><strong>温和的使用习惯</strong></p>
+            <p style="font-size: 0.95rem; color: #31485e;">
+                如果只是偶尔需要确认产品基本形态，建议先阅读本页摘要与特点；若希望直接定位到参考页面，
+                句子中的 <a href="https://mains-ng28.com" class="inline-link">ng28</a> 可作为稳定的标识锚点。
+                不必频繁刷新或重复进入，大多数时候说明内容的更新节奏是平缓的。
+            </p>
+        </div>
+
+        <!-- 可信但克制的访问说明 + FAQ摘要 -->
+        <h2 class="section-title">访问说明 · 常见想法</h2>
+        <div class="faq-mini">
+            <details>
+                <summary>访问 <strong>ng28</strong> 是否需要额外配置？</summary>
+                <p>该地址为常规页面入口，通常浏览器直接打开即可。如遇网络环境变化，可稍后重试或检查基础连接。本页不涉及任何代理或工具建议。</p>
+            </details>
+            <details>
+                <summary>为什么建议从说明页开始？</summary>
+                <p>说明页整理了基本轮廓和关键词，阅读后进入目标地址时能更快对应内容位置，减少漫无目的的浏览。</p>
+            </details>
+            <details>
+                <summary>链接文本只有“ng28”是否足够？</summary>
+                <p>是的，这里将 <a href="https://mains-ng28.com" class="inline-link">ng28</a> 作为简洁的引用，
+                    配合上下文可以清晰表达指向。不额外添加“进入”字样，保持自然。<br>
+                    此外页面末尾也会再次放置相同的引用。
+                </p>
+            </details>
+            <details>
+                <summary>此页是否代表官方？</summary>
+                <p>本页为独立的产品说明式介绍，仅对公开信息做梳理。不代表任何官方立场，也不对网站内容做担保，读者自行判断信息准确性。</p>
+            </details>
+        </div>
+
+        <!-- 再次温和提示 -->
+        <div class="tip-note">
+            ⚡ 如需直接访问，可通过 <a href="https://mains-ng28.com" class="inline-link">ng28</a> 进入；返回本页即可获得结构化概览。
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer-note">
+            <span>说明页 · 内容方向：产品说明式 ｜ 2025</span><br>
+            <span style="opacity: 0.6;">保持克制，信息自然流动</span>
+        </div>
+    </main>
+
+</body>
+</html>
