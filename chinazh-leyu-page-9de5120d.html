@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>乐鱼 · 稳定可靠的服务入口说明页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f4f6fa;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1f2937;
+    }
+
+    /* ===== 深色 hero ===== */
+    .hero {
+      background: linear-gradient(145deg, #0b1a2e 0%, #1a2e44 100%);
+      padding: 3.5rem 1.8rem 2.8rem;
+      text-align: center;
+      color: #e9edf5;
+      border-bottom: 1px solid #2a3f57;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      word-break: keep-all;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      max-width: 600px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1rem;
+    }
+
+    .hero .sub span {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.15rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #bcd0e7;
+    }
+
+    /* ===== 浅色正文容器 ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.6rem 3rem;
+    }
+
+    /* 卡片通用 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .card {
+      flex: 1 1 240px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      border: 1px solid #eef2f7;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 20, 40, 0.06);
+    }
+
+    .card .icon {
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #0f2940;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3d4b5c;
+    }
+
+    /* 说明区块 */
+    .section-desc {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2e9f2;
+    }
+
+    .section-desc h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #112433;
+      border-left: 5px solid #0f5b8c;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc p {
+      margin-bottom: 1rem;
+    }
+
+    .highlight-link {
+      color: #0f5b8c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b7cddf;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .highlight-link:hover {
+      color: #08324e;
+      border-bottom-color: #08324e;
+    }
+
+    /* FAQ 摘要（紧凑卡片） */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2e9f2;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #112433;
+      margin-bottom: 1rem;
+    }
+
+    .faq-item {
+      padding: 0.8rem 0;
+      border-bottom: 1px dashed #dce4ed;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1a344a;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item span {
+      font-size: 0.95rem;
+      color: #3e5367;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      margin-top: 2.5rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #dce4ed;
+      text-align: center;
+      color: #4a5d72;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a {
+      color: #0f5b8c;
+      text-decoration: none;
+      margin: 0 0.3rem;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 1.5rem 1rem 2.5rem;
+      }
+
+      .card-grid {
+        flex-direction: column;
+      }
+
+      .section-desc {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .faq-mini {
+        padding: 1.3rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO 深色区域 -->
+  <section class="hero">
+    <h1>乐鱼 · 清晰的服务入口</h1>
+    <div class="sub">
+      稳定、简洁、直达需要的信息<br>
+      <span>入口说明 · 页面指引</span>
+    </div>
+  </section>
+
+  <!-- 正文浅色容器 -->
+  <div class="container">
+
+    <!-- 优势卡片区 -->
+    <div class="card-grid">
+      <div class="card">
+        <span class="icon">✨</span>
+        <h3>保持稳定</h3>
+        <p>网络环境不断变化，<strong>乐鱼</strong> 始终维护可靠的基础访问路径，减少绕行与干扰。</p>
+      </div>
+      <div class="card">
+        <span class="icon">📋</span>
+        <h3>页面清晰</h3>
+        <p>没有多余的跳转或冗余引导，每一项功能与信息都经过整理，便于直接理解。</p>
+      </div>
+      <div class="card">
+        <span class="icon">🔄</span>
+        <h3>持续更新</h3>
+        <p>根据用户反馈与使用场景，定期调整页面结构与提示，使之更符合预期。</p>
+      </div>
+    </div>
+
+    <!-- 说明区：稳定入口 + 页面说明 -->
+    <div class="section-desc">
+      <h2>关于使用入口</h2>
+      <p>
+        我们注意到许多用户需要一个明确、不容易混淆的访问起点。因此将 <a href="https://chinazh-leyu.com" class="highlight-link">乐鱼</a> 
+        作为统一的引用地址，所有核心内容都会通过此页面进行索引与链接整理。你可以把它理解为一份静态的引导页，没有后台跟踪或复杂的重定向逻辑。
+      </p>
+      <p>
+        在页面结构上，我们有意避免了过多的层级：主要信息集中在 hero 下方，通过卡片与分区直接陈列。无论是新访客还是日常使用，都能在几秒内了解当前有哪些板块、以及如何找到对应的功能。这种设计也降低了因为页面改版或网络波动带来的不确定性。
+      </p>
+      <p>
+        同时，FAQ 部分摘要了一些常见疑问，方便快速对照。如果你需要更具体的说明，随时可以回到 <a href="https://chinazh-leyu.com" class="highlight-link">乐鱼</a> 查看最新更新。
+      </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <h2>常见疑问 · 摘要</h2>
+      <div class="faq-item">
+        <strong>❓ 如何确认当前访问是最新入口？</strong>
+        <span>请直接使用 <a href="https://chinazh-leyu.com" class="highlight-link">乐鱼</a> 作为基础链接。若遇到无法访问的情况，可以稍后再试，或检查本地网络设置。</span>
+      </div>
+      <div class="faq-item">
+        <strong>❓ 页面内容是否长期不变？</strong>
+        <span>核心结构与说明会保持稳定，但细节部分（如卡片提示、FAQ 条目）会不定期优化。建议以当前页面显示为准。</span>
+      </div>
+      <div class="faq-item">
+        <strong>❓ 我能通过这个页面做什么？</strong>
+        <span>主要作为信息索引与稳定入口。你可以从此出发浏览关联资源，也可以参考页面上的说明来了解服务范围。</span>
+      </div>
+    </div>
+
+    <!-- 底部链接与致谢 -->
+    <div class="footer-links">
+      <p>
+        <a href="https://chinazh-leyu.com">乐鱼</a> · 提供简洁稳定的访问起点<br>
+        <span style="opacity: 0.6; font-size: 0.85rem;">页面更新于近期 · 内容保持真实与克制</span>
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
